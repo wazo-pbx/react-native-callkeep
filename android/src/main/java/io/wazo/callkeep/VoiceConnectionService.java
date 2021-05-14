@@ -57,6 +57,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import android.telecom.VideoProfile;
 import static io.wazo.callkeep.Constants.ACTION_AUDIO_SESSION;
 import static io.wazo.callkeep.Constants.ACTION_ONGOING_CALL;
 import static io.wazo.callkeep.Constants.ACTION_CHECK_REACHABILITY;
@@ -208,6 +209,7 @@ public class VoiceConnectionService extends ConnectionService {
         outgoingCallConnection = createConnection(request);
         outgoingCallConnection.setDialing();
         outgoingCallConnection.setAudioModeIsVoip(true);
+        outgoingCallConnection.setVideoState(VideoProfile.STATE_BIDIRECTIONAL);
         outgoingCallConnection.setCallerDisplayName(displayName, TelecomManager.PRESENTATION_ALLOWED);
 
         startForegroundService();
